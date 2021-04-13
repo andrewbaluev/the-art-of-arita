@@ -1,0 +1,77 @@
+.mouse {
+    position: fixed;
+    left: 0;
+    top: 0; 
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    z-index: 9999999;
+    pointer-events: none;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 35px;
+        height: 35px;
+        border-radius: 100%;
+        background-color: #d7d7d7;
+        box-shadow: 4px 4px 4px #CCCACA;
+        transition: opacity .3s ease-in-out;
+        z-index: 2;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 55px;
+        height: 55px;
+        border-radius: 100%;
+        background-color: #CDCDCD;
+        transition: opacity .3s ease-in-out;
+    }
+}
+
+.mouse__view {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    border-radius: 100%;
+    color: #fff;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: 1px;
+
+    z-index: 10;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
+
+.link-visible::after {
+    border: 4px solid #cdcdcd;
+    transform: translate(-50%, -50%) scale(0.5);
+    background-color: transparent;
+    transition: .3s;
+}
+
+.link-visible::before {
+    opacity: 0;
+}
+
+.view-visible .mouse__view {
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+}
